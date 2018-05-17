@@ -7,6 +7,7 @@ before_install:
   - bundle -v
   - rm -f Gemfile.lock
   - gem update --system
+  - gem update bundler
   - gem --version
   - bundle -v
 script:
@@ -20,13 +21,7 @@ matrix:
   fast_finish: true
   include:
     -
-      env: CHECK=rubocop
-    -
-      env: CHECK="syntax lint"
-    -
-      env: CHECK=metadata_lint
-    -
-      env: CHECK=release_checks
+      env: CHECK="lint syntax metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
     -
       env: CHECK=spec
     -
