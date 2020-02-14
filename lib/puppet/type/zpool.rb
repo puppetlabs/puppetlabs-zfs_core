@@ -90,6 +90,10 @@ module Puppet
       desc 'Log disks for this pool. This type does not currently support mirroring of log disks.'
     end
 
+    newproperty(:cache, array_matching: :all, parent: Puppet::Property::VDev) do
+      desc 'Cache disks for this pool.'
+    end
+
     newparam(:pool) do
       desc 'The name for this pool.'
       isnamevar
