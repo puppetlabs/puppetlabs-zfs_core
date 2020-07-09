@@ -41,11 +41,19 @@ Puppet::Type.type(:zpool).provide(:zpool) do
         sym = (value =~ %r{^mirror}) ? :mirror : :raidz
         pool[:raid_parity] = 'raidz2' if value =~ %r{^raidz2}
       else
-        # get full drive name if the value is a partition (Linux only)
-        tmp << if Facter.value(:kernel) == 'Linux' && value =~ %r{/dev/(:?[a-z]+1|disk/by-id/.+-part1)$}
-                 execute("lsblk -p -no pkname #{value}").chomp
+        vdev = if Facter.value(:kernel) == 'Linux' && File.symlink?(value)
+                 File.expand_path(File.readlink(value), File.dirname(value))
                else
                  value
+               end
+
+        # get full drive name if the value is a partition (Linux only)
+        tmp << if Facter.value(:kernel) == 'Linux' && %r{(\/dev\/[a-z]{3}(1))$} =~ vdev
+                 vdev.chomp(Regexp.last_match(2))
+               elsif Facter.value(:kernel) == 'Linux' && %r{(\/dev\/nvme[0-9n]+)p1} =~ vdev
+                 Regexp.last_match(1)
+               else
+                 vdev
                end
         sym = :disk if value == pool_array.first
       end
