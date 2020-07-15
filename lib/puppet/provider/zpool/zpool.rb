@@ -41,7 +41,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
         sym = (value =~ %r{^mirror}) ? :mirror : :raidz
         pool[:raid_parity] = 'raidz2' if value =~ %r{^raidz2}
       else
-        vdev = if File.symlink?(value) and File.readlink(value) !~ %r{dm-[0-9]+$}
+        vdev = if Facter.value(:kernel) == 'Linux' && File.symlink?(value) && File.readlink(value) !~ %r{dm-[0-9]+$}
                  File.expand_path(File.readlink(value), File.dirname(value))
                else
                  value
