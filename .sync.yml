@@ -2,15 +2,8 @@
 Gemfile:
   required:
     ':system_tests':
-      - gem: 'puppet-module-posix-system-r#{minor_version}'
-        platforms: ruby
-      - gem: 'puppet-module-win-system-r#{minor_version}'
-        platforms:
-          - mswin
-          - mingw
-          - x64_mingw
       - gem: beaker
-        version: '~> 3.34'
+        version: '~> 4'
         from_env: BEAKER_VERSION
       - gem: beaker-abs
         from_env: BEAKER_ABS_VERSION
@@ -22,7 +15,10 @@ Gemfile:
         from_env: BEAKER_RSPEC_VERSION
       - gem: beaker-puppet
         from_env: BEAKER_PUPPET_VERSION
-        version: '~> 0.15'
+        version: '~> 1.0'
+      - gem: beaker-vmpooler
+        from_env: BEAKER_PUPPET_VERSION
+        version: '~> 1.3'
     ':development':
       - gem: puppet-strings
   optional:
