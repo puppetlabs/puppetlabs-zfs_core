@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe 'zpool' do
   describe Puppet::Type.type(:zpool) do
-    properties = [:ensure, :disk, :mirror, :raidz, :spare, :log, :autoexpand, :failmode, :ashift, :cache]
+    properties = [:ensure, :disk, :mirror, :raidz, :spare, :log, :autoexpand, :failmode, :ashift, :cache, :raid_parity]
     properties.each do |property|
       it "has a #{property} property" do
         expect(described_class.attrclass(property).ancestors).to be_include(Puppet::Property)
       end
     end
 
-    parameters = [:pool, :raid_parity]
+    parameters = [:pool]
     parameters.each do |parameter|
       it "has a #{parameter} parameter" do
         expect(described_class.attrclass(parameter).ancestors).to be_include(Puppet::Parameter)

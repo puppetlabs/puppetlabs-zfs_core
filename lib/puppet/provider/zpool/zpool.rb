@@ -148,7 +148,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
     end
   end
 
-  [:disk, :mirror, :raidz, :log, :spare, :cache].each do |field|
+  [:disk, :mirror, :raidz, :log, :spare, :cache, :raid_parity].each do |field|
     define_method(field) do
       current_pool[field]
     end

@@ -115,7 +115,7 @@ module Puppet
       isnamevar
     end
 
-    newparam(:raid_parity) do
+    newproperty(:raid_parity, array_matching: :all, parent: Puppet::Property::MultiVDev) do
       desc 'Determines parity when using the `raidz` parameter.'
     end
 

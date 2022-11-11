@@ -218,7 +218,7 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
   end
 
   describe 'when calling the getters and setters' do
-    [:disk, :mirror, :raidz, :log, :spare, :cache].each do |field|
+    [:disk, :mirror, :raidz, :log, :spare, :cache, :raid_parity].each do |field|
       describe "when calling #{field}" do
         it "gets the #{field} value from the current_pool hash" do
           pool_hash = {}
