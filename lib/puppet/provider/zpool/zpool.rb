@@ -58,6 +58,10 @@ Puppet::Type.type(:zpool).provide(:zpool) do
       end
     end
 
+    if pool.key?(:mirror) && pool.key?(:raidz)
+      pool[:force] = true
+    end
+
     pool
   end
 
@@ -113,27 +117,38 @@ Puppet::Type.type(:zpool).provide(:zpool) do
     mirror = @resource[:mirror]
     raidz = @resource[:raidz]
 
+    vdevs = []
+
     if disk
-      disk.map { |d| d.split(' ') }.flatten
-    elsif mirror
-      handle_multi_arrays('mirror', mirror)
-    elsif raidz
-      handle_multi_arrays(raidzarity, raidz)
+      vdevs << disk.map { |d| d.split(' ') }.flatten
+    else
+      if mirror
+        vdevs << handle_multi_arrays('mirror', mirror)
+      end
+      if raidz
+        vdevs << handle_multi_arrays(raidzarity, raidz)
+      end
     end
+
+    vdevs
   end
 
   def add_pool_properties
     properties = []
-    [:ashift, :autoexpand, :failmode].each do |property|
+    [:force, :ashift, :autoexpand, :failmode].each do |property|
       if (value = @resource[property]) && value != ''
-        properties << '-o' << "#{property}=#{value}"
+        if property == :force
+          properties << '-f'
+        else
+          properties << '-o' << "#{property}=#{value}"
+        end
       end
     end
     properties
   end
 
   def create
-    zpool(*([:create] + add_pool_properties + [@resource[:pool]] + build_vdevs + build_named('spare') + build_named('log') + build_named('cache')))
+    zpool(*([:create] + add_pool_properties + [@resource[:pool]] + build_vdevs.flatten + build_named('spare') + build_named('log') + build_named('cache')))
   end
 
   def destroy
@@ -148,7 +163,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
     end
   end
 
-  [:disk, :mirror, :raidz, :log, :spare, :cache, :raid_parity].each do |field|
+  [:disk, :mirror, :raidz, :log, :spare, :cache, :raid_parity, :force].each do |field|
     define_method(field) do
       current_pool[field]
     end
