@@ -39,9 +39,9 @@ Puppet::Type.type(:zpool).provide(:zpool) do
         sym = :log
       when 'cache'
         sym = :cache
-      when %r{^mirror|^raidz1|^raidz2}
-        sym = (value =~ %r{^mirror}) ? :mirror : :raidz
-        pool[:raid_parity] = 'raidz2' if %r{^raidz2}.match?(value)
+      when %r{^((mirror|raidz)\d?)}
+        sym = Regexp.last_match(2).to_sym
+        pool[:raid_parity] = Regexp.last_match(1) if sym == :raidz
       else
         # get full drive name if the value is a partition (Linux only)
         tmp << if Facter.value(:kernel) == 'Linux' && value =~ %r{/dev/(:?[a-z]+1|disk/by-id/.+-part1)$}

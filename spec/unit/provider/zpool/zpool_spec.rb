@@ -170,6 +170,15 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
         expect(pool[:raid_parity]).to eq('raidz2')
       end
     end
+
+    describe 'when the vdev is a raidz3 on linux' do
+      it 'calls create_multi_array with raidz3 and set the raid_parity' do
+        zpool_data = ['mirrorpool', 'raidz3-0', 'disk1', 'disk2']
+        pool = provider.process_zpool_data(zpool_data)
+        expect(pool[:raidz]).to eq(['disk1 disk2'])
+        expect(pool[:raid_parity]).to eq('raidz3')
+      end
+    end
   end
 
   describe 'when calling the getters and setters for configurable options' do
