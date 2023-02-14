@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- \(MODULES-10874\) Add property 'sync' [\#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([iamjamestl](https://github.com/iamjamestl))
+- \(MODULES-10874\) Add property 'sync' [\#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([jameslikeslinux](https://github.com/jameslikeslinux))
 
 ## [1.2.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/1.2.0) (2020-10-30)
 
