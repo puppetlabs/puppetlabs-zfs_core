@@ -2,13 +2,30 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.3.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v1.3.0) (2023-02-14)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/v1.3.0...v1.3.0)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- \(maint\) Fix auto release action [\#58](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/58) ([mhashizume](https://github.com/mhashizume))
+- \(maint\) Follow up PDK updates [\#57](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/57) ([mhashizume](https://github.com/mhashizume))
+- \(PA-4806\) Updates PDK template [\#56](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/56) ([mhashizume](https://github.com/mhashizume))
+- \(MODULES-11353\) Update macos test runners to latest [\#54](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/54) ([cthorn42](https://github.com/cthorn42))
+- \(maint\) Add Solaris install fix [\#53](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/53) ([cthorn42](https://github.com/cthorn42))
+- \(MODULES-11283\) update curl for installing latest nightly build [\#52](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/52) ([AriaXLi](https://github.com/AriaXLi))
+- \(maint\) Add redirect to nightly puppet gem download [\#51](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/51) ([AriaXLi](https://github.com/AriaXLi))
+- \(PA-4133\) Add phoenix to CODEOWNERS [\#50](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/50) ([AriaXLi](https://github.com/AriaXLi))
+- \(maint\) Github workflow now uses windows 2019 [\#49](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/49) ([Dorin-Pleava](https://github.com/Dorin-Pleava))
+- \(maint\) Pin the async gem [\#48](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/48) ([mhashizume](https://github.com/mhashizume))
+
 ## [v1.3.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v1.3.0) (2021-10-04)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/1.2.0...v1.3.0)
 
 ### Added
 
-- \(MODULES-10874\) Add property 'sync' [\#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([iamjamestl](https://github.com/iamjamestl))
+- \(MODULES-10874\) Add property 'sync' [\#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([jameslikeslinux](https://github.com/jameslikeslinux))
 
 ## [1.2.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/1.2.0) (2020-10-30)
 
