@@ -63,9 +63,10 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
     describe 'when there are full path disks on Linux' do
       it 'munges partitions into disk names' do
         allow(provider).to receive(:execute).with('lsblk -p -no pkname /dev/sdc1').and_return('/dev/sdc')
+        allow(provider).to receive(:execute).with('lsblk -p -no pkname /dev/nvme0n1p1').and_return('/dev/nvme0n1')
         allow(provider).to receive(:execute).with('lsblk -p -no pkname /dev/disk/by-id/disk_serial-0:0-part1').and_return('/dev/disk/by-id/disk_serial-0:0')
-        zpool_data = ['foo', '/dev/sdc1', '/dev/disk/by-id/disk_serial-0:0-part1']
-        expect(provider.process_zpool_data(zpool_data)[:disk]).to eq(['/dev/sdc /dev/disk/by-id/disk_serial-0:0'])
+        zpool_data = ['foo', '/dev/sdc1', '/dev/nvme0n1p1', '/dev/disk/by-id/disk_serial-0:0-part1']
+        expect(provider.process_zpool_data(zpool_data)[:disk]).to eq(['/dev/sdc /dev/nvme0n1 /dev/disk/by-id/disk_serial-0:0'])
       end
     end
 
