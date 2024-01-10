@@ -53,7 +53,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
       end
 
       if sym
-        pool[sym] = (pool[sym]) ? pool[sym].unshift(tmp.reverse.join(' ')) : [tmp.reverse.join(' ')]
+        pool[sym] = pool[sym] ? pool[sym].unshift(tmp.reverse.join(' ')) : [tmp.reverse.join(' ')]
         tmp.clear
       end
     end
@@ -99,7 +99,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
 
   # query for parity and set the right string
   def raidzarity
-    (@resource[:raid_parity]) ? @resource[:raid_parity] : 'raidz1'
+    @resource[:raid_parity] ? @resource[:raid_parity] : 'raidz1'
   end
 
   # handle mirror or raid
