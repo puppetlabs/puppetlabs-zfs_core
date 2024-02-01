@@ -19,16 +19,16 @@ RSpec.context 'ZPool: Should Remove' do
     it 'removes a specified resource' do
       # ZPool: create
       on(agent, 'zpool create tstpool /ztstpool/dsk1')
-      on(agent, 'zpool list') do
-        assert_match(%r{tstpool}, @result.stdout, "err: #{agent}")
+      on(agent, 'zpool list') do |result|
+        assert_match(%r{tstpool}, result.stdout, "err: #{agent}")
       end
 
       # ZPool: remove
-      apply_manifest_on(agent, 'zpool{ tstpool: ensure=>absent }') do
-        assert_match(%r{ensure: removed}, @result.stdout, "err: #{agent}")
+      apply_manifest_on(agent, 'zpool{ tstpool: ensure=>absent }') do |result|
+        assert_match(%r{ensure: removed}, result.stdout, "err: #{agent}")
       end
-      on(agent, 'zpool list') do
-        refute_match(%r{tstpool}, @result.stdout, "err: #{agent}")
+      on(agent, 'zpool list') do |result|
+        refute_match(%r{tstpool}, result.stdout, "err: #{agent}")
       end
     end
   end

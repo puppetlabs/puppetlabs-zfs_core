@@ -18,13 +18,13 @@ RSpec.context 'ZPool: Should be Idempotent' do
   solaris_agents.each do |agent|
     it 'creates an idempotent resource' do
       # ZPool: ensure create
-      apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do
-        assert_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
+      apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do |result|
+        assert_match(%r{ensure: created}, result.stdout, "err: #{agent}")
       end
 
       # ZPool: idempotency - create
-      apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do
-        refute_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
+      apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do |result|
+        refute_match(%r{ensure: created}, result.stdout, "err: #{agent}")
       end
     end
   end

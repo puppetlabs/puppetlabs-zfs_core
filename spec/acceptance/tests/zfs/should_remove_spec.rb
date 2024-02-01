@@ -18,11 +18,11 @@ RSpec.context 'ZFS: Should Remove' do
   solaris_agents.each do |agent|
     it 'can remove resources' do
       # ZFS: create
-      on agent, 'zfs create tstpool/tstfs'
+      on(agent, 'zfs create tstpool/tstfs')
 
       # ZFS: ensure can be removed.
-      apply_manifest_on(agent, 'zfs { "tstpool/tstfs": ensure=>absent}') do
-        assert_match(%r{ensure: removed}, @result.stdout, "err: #{agent}")
+      apply_manifest_on(agent, 'zfs { "tstpool/tstfs": ensure=>absent}') do |result|
+        assert_match(%r{ensure: removed}, result.stdout, "err: #{agent}")
       end
     end
   end
