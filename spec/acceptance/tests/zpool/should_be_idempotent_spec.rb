@@ -24,7 +24,7 @@ RSpec.context 'ZPool: Should be Idempotent' do
 
       # ZPool: idempotency - create
       apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do
-        assert_no_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
+        refute_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
       end
     end
   end

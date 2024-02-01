@@ -28,7 +28,7 @@ RSpec.context 'ZPool: Should Remove' do
         assert_match(%r{ensure: removed}, @result.stdout, "err: #{agent}")
       end
       on(agent, 'zpool list') do
-        assert_no_match(%r{tstpool}, @result.stdout, "err: #{agent}")
+        refute_match(%r{tstpool}, @result.stdout, "err: #{agent}")
       end
     end
   end

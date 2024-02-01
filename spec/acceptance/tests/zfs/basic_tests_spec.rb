@@ -30,7 +30,7 @@ RSpec.context 'ZFS: Basic Tests' do
 
       # ZFS: idempotence - create
       apply_manifest_on(agent, 'zfs {"tstpool/tstfs": ensure=>present}') do
-        assert_no_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
+        refute_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
       end
 
       # ZFS: cleanup for next test
