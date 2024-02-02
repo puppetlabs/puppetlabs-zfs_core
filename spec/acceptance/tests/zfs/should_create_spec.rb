@@ -18,13 +18,13 @@ RSpec.context 'ZFS: Should Create' do
   solaris_agents.each do |agent|
     it 'creates a zfs resource' do
       # ZFS: ensure it is created
-      apply_manifest_on(agent, 'zfs {"tstpool/tstfs": ensure=>present}') do
-        assert_match(%r{ensure: created}, @result.stdout, "err: #{agent}")
+      apply_manifest_on(agent, 'zfs {"tstpool/tstfs": ensure=>present}') do |result|
+        assert_match(%r{ensure: created}, result.stdout, "err: #{agent}")
       end
 
       # verify
-      on(agent, 'zfs list') do
-        assert_match(%r{tstpool.tstfs}, @result.stdout, "err: #{agent}")
+      on(agent, 'zfs list') do |result|
+        assert_match(%r{tstpool.tstfs}, result.stdout, "err: #{agent}")
       end
     end
   end
