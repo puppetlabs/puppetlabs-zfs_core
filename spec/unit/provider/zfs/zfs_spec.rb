@@ -112,7 +112,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
   describe 'zoned' do
     context 'on FreeBSD' do
       before(:each) do
-        allow(Facter).to receive(:value).with(:operatingsystem).and_return('FreeBSD')
+        allow(Facter).to receive(:value).with('os.name').and_return('FreeBSD')
       end
       it "gets 'jailed' property" do
         expect(provider).to receive(:zfs).with(:get, '-H', '-o', 'value', :jailed, name).and_return("value\n")
@@ -127,7 +127,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
 
     context 'when not running FreeBSD' do
       before(:each) do
-        allow(Facter).to receive(:value).with(:operatingsystem).and_return('Solaris')
+        allow(Facter).to receive(:value).with('os.name').and_return('Solaris')
       end
       it "gets 'zoned' property" do
         expect(provider).to receive(:zfs).with(:get, '-H', '-o', 'value', :zoned, name).and_return("value\n")
