@@ -42,7 +42,7 @@ Puppet::Type.type(:zfs).provide(:zfs) do
 
   # On FreeBSD zoned is called jailed
   def container_property
-    case Facter.value(:operatingsystem)
+    case Facter.value('os.name')
     when 'FreeBSD'
       :jailed
     else
