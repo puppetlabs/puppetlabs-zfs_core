@@ -119,7 +119,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
         expect(provider.send('zoned')).to eq('value')
       end
 
-      it 'sets jalied=value' do
+      it 'sets jailed=value' do
         expect(provider).to receive(:zfs).with(:set, 'jailed=value', name)
         provider.send('zoned=', 'value')
       end
