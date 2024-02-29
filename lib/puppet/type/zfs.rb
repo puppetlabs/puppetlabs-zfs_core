@@ -107,7 +107,11 @@ module Puppet
     newproperty(:refreservation) do
       desc 'The refreservation property. Valid values are `<size>`, `none`.'
     end
-
+    
+    newproperty(:relatime) do
+      desc 'The relatime property. Valid values are `on`, `off`. Only supported on Linux' 
+    end
+    
     newproperty(:reservation) do
       desc 'The reservation property. Valid values are `<size>`, `none`.'
     end
