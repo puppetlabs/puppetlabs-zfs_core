@@ -93,7 +93,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
     [:aclinherit, :aclmode, :atime, :canmount, :checksum,
      :compression, :copies, :dedup, :defaultuserquota, :devices, :exec, :logbias,
      :mountpoint, :nbmand, :overlay, :primarycache, :quota, :readonly,
-     :recordsize, :refquota, :refreservation, :reservation,
+     :recordsize, :refquota, :refreservation, :relatime, :reservation,
      :secondarycache, :setuid, :shareiscsi, :sharenfs, :sharesmb,
      :snapdir, :version, :volsize, :vscan, :xattr].each do |prop|
       it "gets #{prop}" do

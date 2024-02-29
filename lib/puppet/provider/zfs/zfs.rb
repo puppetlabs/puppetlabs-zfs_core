@@ -58,7 +58,8 @@ Puppet::Type.type(:zfs).provide(:zfs) do
   # acltype is for ZFS on Linux, and allows disabling or enabling POSIX ACLs
   # http://webcache.googleusercontent.com/search?q=cache:-p74K0DVsdwJ:developers.slashdot.org/story/11/11/09/2343258/solaris-11-released+&cd=13
   # defaultuserquota is not supported in zfs filesystem versions older than 6 and will error on Solaris 10 machines
-  [:aclmode, :acltype, :shareiscsi, :overlay, :defaultuserquota].each do |field|
+  # relatime is only supported on ZFS on Linux
+  [:aclmode, :acltype, :shareiscsi, :overlay, :defaultuserquota, :relatime].each do |field|
     # The zfs commands use the property value '-' to indicate that the
     # property is not set. We make use of this value to indicate that the
     # property is not set since it is not available. Conversely, if these
