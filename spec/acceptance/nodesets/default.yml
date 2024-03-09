@@ -12,6 +12,18 @@ HOSTS:
     roles:
     - agent
     - default
+  ubuntu22-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    hypervisor: vmpooler
+    platform: ubuntu-22.04-amd64
+    packaging_platform: ubuntu-22.04-amd64
+    template: ubuntu-2204-x86_64
+    roles:
+    - agent
+    - default
 CONFIG:
   type: agent
   nfs_server: none
