@@ -76,9 +76,9 @@ Puppet::Type.type(:zfs).provide(:zfs) do
   end
 
   [:aclinherit, :atime, :canmount, :checksum,
-   :compression, :copies, :dedup, :devices, :exec, :logbias,
-   :mountpoint, :nbmand, :primarycache, :quota, :readonly,
-   :recordsize, :refquota, :refreservation, :reservation,
+   :compression, :copies, :dedup, :defaultuserquota, :devices,
+   :exec, :logbias, :mountpoint, :nbmand, :primarycache, :quota,
+   :readonly, :recordsize, :refquota, :refreservation, :reservation,
    :secondarycache, :setuid, :sharenfs, :sharesmb,
    :snapdir, :sync, :version, :volsize, :vscan, :xattr].each do |field|
     define_method(field) do
