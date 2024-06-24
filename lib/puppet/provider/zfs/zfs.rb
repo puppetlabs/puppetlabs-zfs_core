@@ -76,7 +76,7 @@ Puppet::Type.type(:zfs).provide(:zfs) do
   end
 
   [:aclinherit, :atime, :canmount, :checksum,
-   :compression, :copies, :dedup, :devices, :exec, :logbias,
+   :compression, :copies, :dedup, :defaultuserquota, :devices, :exec, :logbias,
    :mountpoint, :nbmand, :primarycache, :quota, :readonly,
    :recordsize, :refquota, :refreservation, :relatime, :reservation,
    :secondarycache, :setuid, :sharenfs, :sharesmb,
