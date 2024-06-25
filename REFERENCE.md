@@ -127,10 +127,6 @@ The refquota property. Valid values are `<size>`, `none`.
 
 The refreservation property. Valid values are `<size>`, `none`.
 
-##### `relatime`
-
-The relatime property. Valid values are `on`, `off`. Only supported on Linux
-
 ##### `reservation`
 
 The reservation property. Valid values are `<size>`, `none`.
