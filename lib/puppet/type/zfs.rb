@@ -56,10 +56,6 @@ module Puppet
       desc 'The dedup property. Valid values are `on`, `off`.'
     end
 
-    newproperty(:defaultuserquota) do
-      desc 'The defaultuserquota property. Valid values are `<size>`, `none`.'
-    end
-
     newproperty(:devices) do
       desc 'The devices property. Valid values are `on`, `off`.'
     end

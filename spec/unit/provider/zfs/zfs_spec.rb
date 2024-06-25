@@ -91,7 +91,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
 
   describe 'zfs properties' do
     [:aclinherit, :aclmode, :atime, :canmount, :checksum,
-     :compression, :copies, :dedup, :defaultuserquota, :devices, :exec, :logbias,
+     :compression, :copies, :dedup, :devices, :exec, :logbias,
      :mountpoint, :nbmand, :overlay, :primarycache, :quota, :readonly,
      :recordsize, :refquota, :refreservation, :reservation,
      :secondarycache, :setuid, :shareiscsi, :sharenfs, :sharesmb,

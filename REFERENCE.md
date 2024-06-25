@@ -67,10 +67,6 @@ The copies property. Valid values are `1`, `2`, `3`.
 
 The dedup property. Valid values are `on`, `off`.
 
-##### `defaultuserquota`
-
-The defaultuserquota property. Valid values are `<size>`, `none`.
-
 ##### `devices`
 
 The devices property. Valid values are `on`, `off`.
