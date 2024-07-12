@@ -56,6 +56,16 @@ module Puppet
       desc 'The dedup property. Valid values are `on`, `off`.'
     end
 
+    newproperty(:defaultuserquota) do
+      desc 'The defaultuserquota property. Valid values are `<size>`, `none`.'
+
+      # Solaris 10 uses zfs filesystem version 5 which doesn't support defaultuserquota
+      validate do |_value|
+        raise Puppet::Error _('This property is only supported on zfs filestystem version >= 6') if Facter.value(:kernel) == 'SunOS' && Puppet::Util::Package.versioncmp(Facter.value(:kernelrelease),
+'11') < 0
+      end
+    end
+
     newproperty(:devices) do
       desc 'The devices property. Valid values are `on`, `off`.'
     end
