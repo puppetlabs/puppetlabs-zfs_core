@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Puppet::Type.type(:zfs) do
-  properties = [:ensure, :mountpoint, :compression, :copies, :overlay, :quota, :defaultuserquota, :reservation, :sharenfs, :snapdir, :sync]
+  properties = [:ensure, :mountpoint, :compression, :copies, :overlay, :quota, :defaultuserquota, :relatime, :reservation, :sharenfs, :snapdir, :sync]
 
   properties.each do |property|
     it "has a #{property} property" do

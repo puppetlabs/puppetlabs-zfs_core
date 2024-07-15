@@ -118,6 +118,14 @@ module Puppet
       desc 'The refreservation property. Valid values are `<size>`, `none`.'
     end
 
+    newproperty(:relatime) do
+      desc 'The relatime property. Valid values are `on`, `off`. Only supported on Linux'
+
+      validate do |_value|
+        raise Puppet::Error _('This property is only supported on Linux') unless Facter.value(:kernel) == 'Linux'
+      end
+    end
+
     newproperty(:reservation) do
       desc 'The reservation property. Valid values are `<size>`, `none`.'
     end
