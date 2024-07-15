@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.6.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v1.6.0) - 2024-07-15
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/v1.5.0...v1.6.0)
+
+### Added
+
+- Update zfs with relatime support [#84](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/84) ([AriaXLi](https://github.com/AriaXLi))
+- (PA-5790) Add zfs attribute defaultuserquota [#83](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/83) ([AriaXLi](https://github.com/AriaXLi))
+- Add relatime property support to zfs [#79](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/79) ([h0tw1r3](https://github.com/h0tw1r3))
+- Add support for nvme devices [#66](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/66) ([murkyway](https://github.com/murkyway))
+- MODULES-11423: add zfs attribute defaultuserquota [#63](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/63) ([eg-roberts](https://github.com/eg-roberts))
+
+### Other
+
+- Revert "add zfs attribute defaultuserquota" [#82](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/82) ([shubhamshinde360](https://github.com/shubhamshinde360))
+- Revert "Merge pull request #79 from h0tw1r3/relatime" [#81](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/81) ([AriaXLi](https://github.com/AriaXLi))
+
 ## [v1.5.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v1.5.0) - 2024-03-06
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/v1.4.0...v1.5.0)
