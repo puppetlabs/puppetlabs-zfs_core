@@ -5,7 +5,7 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
   let(:zpool) { '/usr/sbin/zpool' }
 
   let(:resource) do
-    Puppet::Type.type(:zpool).new(name: name, provider: :zpool)
+    Puppet::Type.type(:zpool).new(name:, provider: :zpool)
   end
 
   let(:provider) { resource.provider }

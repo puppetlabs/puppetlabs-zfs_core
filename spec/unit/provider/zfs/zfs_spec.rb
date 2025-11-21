@@ -5,7 +5,7 @@ describe Puppet::Type.type(:zfs).provider(:zfs) do
   let(:zfs) { '/usr/sbin/zfs' }
 
   let(:resource) do
-    Puppet::Type.type(:zfs).new(name: name, provider: :zfs)
+    Puppet::Type.type(:zfs).new(name:, provider: :zfs)
   end
 
   let(:provider) { resource.provider }
