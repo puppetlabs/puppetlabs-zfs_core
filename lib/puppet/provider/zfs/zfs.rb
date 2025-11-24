@@ -6,7 +6,7 @@ Puppet::Type.type(:zfs).provide(:zfs) do
   def self.instances
     zfs(:list, '-H').split("\n").map do |line|
       name, _used, _avail, _refer, _mountpoint = line.split(%r{\s+})
-      new(name: name, ensure: :present)
+      new(name:, ensure: :present)
     end
   end
 

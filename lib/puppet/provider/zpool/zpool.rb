@@ -7,7 +7,7 @@ Puppet::Type.type(:zpool).provide(:zpool) do
   def self.instances
     zpool(:list, '-H').split("\n").map do |line|
       name, _size, _alloc, _free, _cap, _health, _altroot = line.split(%r{\s+})
-      new(name: name, ensure: :present)
+      new(name:, ensure: :present)
     end
   end
 

@@ -21,7 +21,7 @@ describe 'zpool' do
     let(:resource) { instance_double('resource', :[]= => nil, :property => nil) }
     let(:vdev) do
       described_class.new(
-        resource: resource,
+        resource:,
       )
     end
 
@@ -59,7 +59,7 @@ describe 'zpool' do
     let(:resource) { instance_double('resource', :[]= => nil, :property => nil) }
     let(:multi_vdev) do
       described_class.new(
-        resource: resource,
+        resource:,
       )
     end
 
