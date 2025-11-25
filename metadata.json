@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-zfs_core",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "author": "puppetlabs",
   "summary": "Manage zfs. Create destroy and set properties on zfs instances.",
   "license": "Apache-2.0",
