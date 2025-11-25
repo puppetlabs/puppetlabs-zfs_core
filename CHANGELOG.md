@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v2.0.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v2.0.0) - 2025-11-25
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/v1.6.1...v2.0.0)
+
+### Other
+
+- (PA-7815) Updates for pdk template 3.5.1 [#96](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/96) ([tvpartytonight](https://github.com/tvpartytonight))
+- (PA-7366) Use puppetcore for testing [#93](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/93) ([tvpartytonight](https://github.com/tvpartytonight))
+- (PA-6139) Drop beaker-puppet_install_helper gem in zfs-core module [#90](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/90) ([amitkarsale](https://github.com/amitkarsale))
+
 ## [v1.6.1](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/v1.6.1) - 2024-07-15
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-zfs_core/compare/v1.6.0...v1.6.1)
@@ -15,7 +25,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ### Added
 
-- Update zfs with relatime support [#84](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/84) ([AriaXLi](https://github.com/AriaXLi))
+- (PA-6738) Update zfs with relatime support [#84](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/84) ([AriaXLi](https://github.com/AriaXLi))
 - (PA-5790) Add zfs attribute defaultuserquota [#83](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/83) ([AriaXLi](https://github.com/AriaXLi))
 - Add support for nvme devices [#66](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/66) ([murkyway](https://github.com/murkyway))
 
@@ -37,7 +47,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ### Added
 
-- (MODULES-10874) Add property 'sync' [#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([jameslikeslinux](https://github.com/jameslikeslinux))
+- (MODULES-10874) Add property 'sync' [#43](https://github.com/puppetlabs/puppetlabs-zfs_core/pull/43) ([puppetjoy](https://github.com/puppetjoy))
 
 ## [1.2.0](https://github.com/puppetlabs/puppetlabs-zfs_core/tree/1.2.0) - 2020-10-30
 
