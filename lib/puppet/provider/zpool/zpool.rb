@@ -62,19 +62,21 @@ Puppet::Type.type(:zpool).provide(:zpool) do
   end
 
   def get_pool_data
-    # https://docs.oracle.com/cd/E19082-01/817-2271/gbcve/index.html
-    # we could also use zpool iostat -v mypool for a (little bit) cleaner output
+    # https://openzfs.github.io/openzfs-docs/msg/index.html
+    # https://docs.oracle.com/cd/E19120-01/open.solaris/817-2271/gbcve/index.html
     zpool_opts = case Facter.value(:kernel)
-                 # use full device names ("-P") on Linux/ZOL to prevent
-                 # mismatches between creation and display paths:
+                 # Do not use the 'scripted mode' ("-H") to maintain
+                 # compatibility with non-OpenZFS targets.
+                 #
+                 # Use full device names ("-P") on Linux (OpenZFS) to
+                 # prevent mismatches between creation and display paths:
                  when 'Linux'
                    '-P'
                  else
                    ''
                  end
-    out = execute("zpool status #{zpool_opts} #{@resource[:pool]}", failonfail: false, combine: false)
-    zpool_data = out.lines.select { |line| line.index("\t") == 0 }.map { |l| l.strip.split("\s")[0] }
-    zpool_data.shift
+    out = execute("zpool iostat -v #{zpool_opts} #{@resource[:pool]}", failonfail: false, combine: false)
+    zpool_data = out.lines.reject { |line| line.strip.empty? }[3..-2].map { |line| line.strip.split("\s")[0] }
     zpool_data
   end
 
