@@ -15,6 +15,10 @@ def solaris_agents
   agents.select { |agent| agent['platform'].include?('solaris') }
 end
 
+def linux_agents
+  agents.select { |agent| agent['platform'].include?('ubuntu') }
+end
+
 RSpec.configure do |c|
   c.before :suite do
     unless ENV['BEAKER_provision'] == 'no'
@@ -79,6 +83,9 @@ EOM
 
       # Until solaris gets new image we need to add to the cert chain on solaris, call a beaker-puppet setup script to handle this
       hosts.each do |host|
+        if hosts.platform.include?('ubuntu')
+          on(host, 'apt -y install zfsutils-linux')
+        end
         next unless host.platform.match? %r{solaris-11(\.2)?-(i386|sparc)}
         create_remote_file(host, 'DigiCertTrustedRootG4.crt.pem', DIGICERT)
         on(host, 'chmod a+r /root/DigiCertTrustedRootG4.crt.pem')

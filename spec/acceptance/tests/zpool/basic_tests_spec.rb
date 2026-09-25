@@ -3,19 +3,19 @@ require 'spec_helper_acceptance'
 RSpec.context 'ZPool: Basic Tests' do
   before(:all) do
     # ZPool: setup
-    solaris_agents.each do |agent|
+    agents.each do |agent|
       zpool_setup agent
     end
   end
 
   after(:all) do
     # ZPool: cleanup
-    solaris_agents.each do |agent|
+    agents.each do |agent|
       zpool_clean agent
     end
   end
 
-  solaris_agents.each do |agent|
+  agents.each do |agent|
     it 'can create an idempotent zpool resource' do
       # ZPool: create zpool disk
       apply_manifest_on(agent, "zpool{ tstpool: ensure=>present, disk=>'/ztstpool/dsk1' }") do |result|
