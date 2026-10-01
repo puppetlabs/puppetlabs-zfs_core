@@ -73,7 +73,14 @@ Puppet::Type.type(:zpool).provide(:zpool) do
                    ''
                  end
     out = execute("zpool status #{zpool_opts} #{@resource[:pool]}", failonfail: false, combine: false)
-    zpool_data = out.lines.select { |line| line.index("\t") == 0 }.map { |l| l.strip.split("\s")[0] }
+    lines = out.lines
+    # Skip until we reach the NAME/STATE/READ/WRITE/CKSUM header
+    lines = lines.drop_while { |l| !(l =~ /^\s*NAME\s+STATE\s+READ\s+WRITE\s+CKSUM/) }
+    # Now collect indented table rows (pool and vdevs)
+    zpool_data = lines
+                 .select { |l| l =~ /^\s+/ }
+                 .map    { |l| l.strip.split(/\s+/)[0] }
+    # Drop the "NAME" header
     zpool_data.shift
     zpool_data
   end
