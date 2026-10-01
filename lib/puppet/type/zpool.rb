@@ -115,13 +115,22 @@ module Puppet
       isnamevar
     end
 
-    newparam(:raid_parity) do
+    newproperty(:raid_parity, array_matching: :all, parent: Puppet::Property::MultiVDev) do
       desc 'Determines parity when using the `raidz` parameter.'
+    end
+
+    newproperty(:force, boolean: false) do
+      desc "Forces use of vdevs, even if they appear in use or specify a conflicting replication level.
+      Not all devices can be overridden in this manner.
+      WARNING: this is an advanced option that should be used with caution! Ignores safety checks, may OVERWRITE DATA!"
+
+      defaultto false
+      newvalues(:true, :false)
     end
 
     validate do
       has_should = [:disk, :mirror, :raidz].select { |prop| should(prop) }
-      raise _('You cannot specify %{multiple_props} on this type (only one)') % { multiple_props: has_should.join(' and ') } if has_should.length > 1
+      raise _('You cannot specify %{multiple_props} on this type (only one)') % { multiple_props: has_should.join(' and ') } if has_should.length > 1 && !should(:force)
     end
   end
 end

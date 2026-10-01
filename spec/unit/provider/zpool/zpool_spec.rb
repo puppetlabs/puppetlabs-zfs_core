@@ -171,6 +171,24 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
         expect(pool[:raid_parity]).to eq('raidz2')
       end
     end
+
+    describe 'when the vdev is a raidz3 on linux' do
+      it 'calls create_multi_array with raidz3 and set the raid_parity' do
+        zpool_data = ['mirrorpool', 'raidz3-0', 'disk1', 'disk2']
+        pool = provider.process_zpool_data(zpool_data)
+        expect(pool[:raidz]).to eq(['disk1 disk2'])
+        expect(pool[:raid_parity]).to eq('raidz3')
+      end
+    end
+
+    describe 'when there are mixed vdev replication levels' do
+      it 'calls create_multi_array with mirror and raidz1' do
+        zpool_data = ['mirrorpool', 'mirror-0', 'disk1', 'disk2', 'raidz1-1', 'disk3', 'disk4']
+        pool = provider.process_zpool_data(zpool_data)
+        expect(pool[:mirror]).to eq(['disk1 disk2'])
+        expect(pool[:raidz]).to eq(['disk3 disk4'])
+      end
+    end
   end
 
   describe 'when calling the getters and setters for configurable options' do
@@ -210,7 +228,7 @@ describe Puppet::Type.type(:zpool).provider(:zpool) do
   end
 
   describe 'when calling the getters and setters' do
-    [:disk, :mirror, :raidz, :log, :spare, :cache].each do |field|
+    [:disk, :mirror, :raidz, :log, :spare, :cache, :raid_parity, :force].each do |field|
       describe "when calling #{field}" do
         it "gets the #{field} value from the current_pool hash" do
           pool_hash = {}
